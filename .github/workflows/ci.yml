@@ -1,0 +1,13 @@
+name: CI Failure Drill
+
+on:
+  push
+
+jobs:
+  drill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deliberately fail
+        run: |
+          echo "DRILL-CONTROLLED-FAILURE"
+          exit 1
