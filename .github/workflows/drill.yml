@@ -1,0 +1,13 @@
+name: On-Call CI Failure Drill
+
+on:
+  workflow_dispatch:
+
+jobs:
+  drill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulate flaky dependency
+        run: |
+          echo "DRILL-FAIL-9182 simulated flaky dependency"
+          exit 1
