@@ -1,0 +1,24 @@
+name: Flaky Build Drill
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write build report
+        run: |
+          echo "drill build report" > report.txt
+          cat report.txt
+
+      - name: Upload build report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-report
+          path: report.txt
+
+      - name: Deliberately fail the build
+        run: |
+          echo "DRILL-FLAKY-BUILD simulated transient build failure"
+          exit 1
